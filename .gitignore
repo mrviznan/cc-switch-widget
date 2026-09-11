@@ -1,0 +1,8 @@
+# Python 运行产物
+__pycache__/
+*.pyc
+
+# 本地构建环境与打包产物（EXE 通过 GitHub Releases 或本地打包获得）
+.build-venv/
+build/
+dist/
