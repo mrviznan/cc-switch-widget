@@ -2,8 +2,8 @@
 setlocal
 cd /d "%~dp0"
 
-if exist "%~dp0dist\CC Switch 悬浮球.exe" (
-  start "" "%~dp0dist\CC Switch 悬浮球.exe"
+if exist "%~dp0dist\CC-Switch-Ball.exe" (
+  start "" "%~dp0dist\CC-Switch-Ball.exe"
   exit /b
 )
 

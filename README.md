@@ -4,7 +4,7 @@ Windows 上的轻量桌面小组件，用于查看 [CC Switch](https://github.co
 
 ## 下载使用（推荐）
 
-无需安装 Python 或 Node.js，直接从 [Releases](../../releases) 下载最新的 `CC Switch 悬浮球.exe`，双击即可运行。
+无需安装 Python 或 Node.js，直接从 [Releases](../../releases) 下载最新的 `CC-Switch-Ball.exe`，双击即可运行。
 
 > 首次运行时 Windows SmartScreen 可能提示"未知发布者"，点击"更多信息 → 仍要运行"即可。这是未签名程序的正常提示。
 
@@ -42,7 +42,7 @@ python -m unittest discover -s tests -v
 
 ## 打包
 
-打包时 PyInstaller 会自动探测本机 Node.js（环境变量 `CCSWITCH_NODE_PATH` → PATH → `C:\Program Files\nodejs`），一并打入 EXE，用于执行 CC Switch 的 JavaScript 余额查询脚本。生成文件位于 `dist\CC Switch 悬浮球.exe`。
+打包时 PyInstaller 会自动探测本机 Node.js（环境变量 `CCSWITCH_NODE_PATH` → PATH → `C:\Program Files\nodejs`），一并打入 EXE，用于执行 CC Switch 的 JavaScript 余额查询脚本。生成文件位于 `dist\CC-Switch-Ball.exe`。
 
 重新打包可双击 `打包悬浮球.cmd`，或在此目录执行：
 
@@ -51,6 +51,8 @@ python -m unittest discover -s tests -v
 ```
 
 推送 `v*` 格式的标签（或手动触发）时，GitHub Actions 会在云端自动完成打包并把 EXE 上传到对应 Release。
+
+> 注：GitHub Release 附件的文件名不支持中文和空格，因此对外发布的文件统一命名为 `CC-Switch-Ball.exe`（程序界面仍是中文）。
 
 ## 当前限制
 

@@ -16,5 +16,5 @@ if errorlevel 1 (
   exit /b 1
 )
 
-echo Build complete: dist\CC Switch 悬浮球.exe
+echo Build complete: dist\CC-Switch-Ball.exe
 pause
