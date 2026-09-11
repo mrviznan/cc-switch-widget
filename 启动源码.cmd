@@ -7,5 +7,23 @@ if exist "%ProgramFiles%\Python310\pythonw.exe" (
   exit /b
 )
 
-echo Python 3.10 with Tkinter was not found.
+if exist "%LocalAppData%\Programs\Python\Python310\pythonw.exe" (
+  start "" "%LocalAppData%\Programs\Python\Python310\pythonw.exe" "%~dp0widget.py"
+  exit /b
+)
+
+where pyw >nul 2>nul
+if not errorlevel 1 (
+  pyw -3 "%~dp0widget.py"
+  exit /b
+)
+
+where pythonw >nul 2>nul
+if not errorlevel 1 (
+  pythonw "%~dp0widget.py"
+  exit /b
+)
+
+echo Python 3 with Tkinter was not found.
+echo Install Python 3 and make sure pythonw.exe is available on PATH.
 pause

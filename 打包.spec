@@ -1,14 +1,35 @@
 # PyInstaller spec for the standalone Windows floating-ball build.
+import os
+import shutil
 from pathlib import Path
 
 block_cipher = None
 root = Path(SPECPATH)
-node_path = Path(r"D:\study\nodejs\node.exe")
+
+
+def find_node() -> str:
+    configured = os.environ.get("CCSWITCH_NODE_PATH", "").strip()
+    candidates = [configured] if configured else []
+    candidates.append(shutil.which("node") or shutil.which("node.exe") or "")
+    candidates.append(
+        str(Path(os.environ.get("ProgramFiles", r"C:\Program Files")) / "nodejs" / "node.exe")
+    )
+    for candidate in candidates:
+        if candidate and Path(candidate).exists():
+            return candidate
+    return ""
+
+
+node_path = find_node()
+if node_path:
+    print(f"Bundling Node.js runtime: {node_path}")
+else:
+    print("WARNING: node.exe not found; the EXE will need Node.js on PATH at runtime.")
 
 a = Analysis(
     [str(root / "widget.py")],
     pathex=[str(root)],
-    binaries=[(str(node_path), "runtime")] if node_path.exists() else [],
+    binaries=[(node_path, "runtime")] if node_path else [],
     datas=[(str(root / "quota_query.js"), ".")],
     hiddenimports=[],
     hookspath=[],

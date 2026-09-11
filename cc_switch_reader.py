@@ -74,7 +74,6 @@ def find_node() -> str | None:
     candidates.extend(
         [
             shutil.which("node") or "",
-            r"D:\study\nodejs\node.exe",
             r"C:\Program Files\nodejs\node.exe",
         ]
     )
